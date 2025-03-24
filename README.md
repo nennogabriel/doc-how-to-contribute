@@ -3,11 +3,13 @@
 ## Simple 6 steps to do:
 
 1. Update your local repository and create a branch from the main branch
+   - Use the naming convention: `docs/<what-is-the-change-about>` (lowercase, replace spaces with hyphens)
+   - Example: `docs/zigchaind-quickstart-links-fix`
 
 ```bash
 git checkout main
 git pull
-git checkout -b branch-name
+git checkout -b docs/your-change-description
 ```
 
 2. Make changes in the code
@@ -16,18 +18,18 @@ git checkout -b branch-name
 
 ```bash
 git add .
-git commit -m "doc: message"
+git commit -m "docs: message"
 ```
 
 4. Push your changes to the branch
 
 ```bash
-git push origin branch-name
+git push origin docs/your-change-description
 ```
 
 5. Open a pull request on GitHub
 
-6. Wait for the project maintainer to merge your changes
+6. Address any reviewer comments and wait for the project maintainer to merge your changes
 
 # Get deeper into steps
 
@@ -59,19 +61,23 @@ git clone https://github.com/your-username/your-repo
 
 **Why?** Cloning creates a local copy of the repository on your machine so you can make changes without affecting the original project until you're ready to share them.
 
-Troubleshooting: If you have problems with SSH keys, you can follow this [tutorial](https://docs.github.com/pt/github/authenticating-to-github/connecting-to-github-with-ssh)
+Troubleshooting: If you have problems with SSH keys, you can follow our internal handbook article about [setting up SSH keys](https://app.gitbook.com/o/P49cpcrUNEImf2xtEknS/s/5YQSIGv5ozj0uCmkBoIh/tech/trainings/connect-to-github-with-ssh). This will guide you through the process specific to our workflow.
 
 ## 1. Create a branch from the main branch
 
 ```bash
 git checkout main
 git pull
-git checkout -b branch-name
+git checkout -b docs/your-change-description
 ```
 
 **Why?** Before creating a new branch, we switch to the main branch and pull the latest changes. This ensures your new branch starts from the most recent version of the project, minimizing potential conflicts later. Creating a separate branch allows you to make changes without affecting the main codebase.
 
-Choose a descriptive branch name related to the feature or fix you're implementing (e.g., `fix-login-button`, `add-dark-theme`).
+**Branch naming convention:** For documentation changes, use `docs/<what-is-the-change-about>` with a descriptive name related to your changes. For example:
+
+- `docs/zigchaind-quickstart-links-fix`
+- `docs/improve-installation-section`
+- `docs/fix-api-examples`
 
 ## 2. Make changes in the code
 
@@ -79,29 +85,34 @@ Open your favorite code editor and make the necessary changes to implement your 
 
 **Why?** Working in small, focused changes makes your contribution easier to review and less likely to introduce bugs. Try to stick to a single purpose per branch.
 
+**Commit frequently:** Push yourself to commit when you're happy with the result of what you have. Try to reach a satisfactory result soon rather than making one massive change - smaller, focused commits are easier to review and track.
+
 ## 3. Commit your changes
 
 ```bash
 git add . # this command stages all files changes
-git commit -m "type: short description of changes"
+git commit -m "docs: short description of changes"
 ```
 
 **Why?** Commits create savepoints in your code history. The `git add` command stages your changes (prepares them to be committed), and `commit` records them permanently in the repository history with a message describing what you did.
 
-**Commit message format:** Many projects follow conventions like:
+**Commit message format:** We follow conventional commits. For documentation changes, use:
+
+- `docs:` for documentation changes
+
+Other common prefixes include:
 
 - `feat:` for new features
 - `fix:` for bug fixes
-- `doc:` for documentation changes
 - `style:` for formatting, missing semi-colons, etc.
 - `refactor:` for code refactoring
 - `test:` for adding tests
-- `chore:` for maintenance tasks
+- `chore:` for maintenance tasks or unclassified changes
 
 ## 4. Push your changes to the branch
 
 ```bash
-git push origin branch-name
+git push origin docs/your-change-description
 ```
 
 **Why?** Pushing uploads your local commits to GitHub, making them available to others and allowing you to create a pull request. The `origin` refers to the remote repository on GitHub.
@@ -115,9 +126,21 @@ git push origin branch-name
 
 **Why?** Pull requests notify project maintainers of your proposed changes and initiate the code review process. They provide a forum to discuss your implementation before merging it into the main codebase.
 
-## 6. Wait for the project maintainer to merge your changes
+**Include screenshots** when relevant to help reviewers understand your changes, especially for UI or documentation improvements.
 
-Be patient and responsive to feedback. The maintainer might request changes before accepting your contribution.
+![Creating pull request screenshot](./images/create-pr.png)
+![Describe pull request screenshot](./images/pr-description.png)
+
+## 6. Address reviewer comments and wait for merge
+
+After submitting your pull request, reviewers may provide feedback or request changes:
+
+1. Read all comments carefully
+2. Make the requested changes in your local branch
+3. Commit and push the updates
+4. Respond to the comments indicating that you've addressed them
+
+Be patient and responsive to feedback. The maintainer might request several rounds of changes before accepting your contribution.
 
 **Why?** Code review helps maintain quality and consistency in the project. Maintainers may have insights about project standards or edge cases you hadn't considered.
 
@@ -182,6 +205,7 @@ git push origin branch-name
 If you see "Permission denied (publickey)" when pushing:
 
 - Ensure your SSH key is properly set up with GitHub
+- Refer to our internal handbook [article on SSH key setup](https://app.gitbook.com/o/P49cpcrUNEImf2xtEknS/s/5YQSIGv5ozj0uCmkBoIh/tech/trainings/connect-to-github-with-ssh)
 - Try using HTTPS instead with personal access token
 
 ### 6. Local branch out of sync with remote
