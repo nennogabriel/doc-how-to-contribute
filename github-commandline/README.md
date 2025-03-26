@@ -128,8 +128,8 @@ git push origin docs/your-change-description
 
 **Include screenshots** when relevant to help reviewers understand your changes, especially for UI or documentation improvements.
 
-![Creating pull request screenshot](./images/create-pr.png)
-![Describe pull request screenshot](./images/pr-description.png)
+![Creating pull request screenshot](images/create-pr.png)
+![Describe pull request screenshot](images/pr-description.png)
 
 ## 6. Address reviewer comments and wait for merge
 
