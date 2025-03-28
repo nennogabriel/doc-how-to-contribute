@@ -1,8 +1,8 @@
 # How to contribute to a project on GitHub
 
-## Simple 6 steps to do:
+## Simple 7 steps to do:
 
-1. Update your local repository and create a branch from the main branch
+1. [Update your local repository and create a branch from the main branch](#1-create-a-branch-from-the-main-branch)
    - Use the naming convention: `docs/<what-is-the-change-about>` (lowercase, replace spaces with hyphens)
    - Example: `docs/zigchaind-quickstart-links-fix`
 
@@ -12,24 +12,30 @@ git pull
 git checkout -b docs/your-change-description
 ```
 
-2. Make changes in the code
+2. [Make changes in the code](#2-make-changes-in-the-code)
 
-3. Commit your changes
+3. [Test your changes locally](#3-test-your-changes-locally)
+
+```bash
+npm start
+```
+
+4. [Commit your changes](#4-commit-your-changes)
 
 ```bash
 git add .
 git commit -m "docs: message"
 ```
 
-4. Push your changes to the branch
+5. [Push your changes to the branch](#5-push-your-changes-to-the-branch)
 
 ```bash
 git push origin docs/your-change-description
 ```
 
-5. Open a pull request on GitHub
+6. [Open a pull request on GitHub](#6-open-a-pull-request-on-github)
 
-6. Address any reviewer comments and wait for the project maintainer to merge your changes
+7. [Address reviewer comments and wait for merge](#7-address-reviewer-comments-and-wait-for-merge)
 
 # Get deeper into steps
 
@@ -57,9 +63,11 @@ Now you are ready to clone a repository and start contributing.
 
 ```bash
 git clone https://github.com/your-username/your-repo
+cd your-repo
+npm i  # Install dependencies if it's your first time with the repository
 ```
 
-**Why?** Cloning creates a local copy of the repository on your machine so you can make changes without affecting the original project until you're ready to share them.
+**Why?** Cloning creates a local copy of the repository on your machine so you can make changes without affecting the original project until you're ready to share them. Running `npm i` installs all the required dependencies for the project when you're working with it for the first time.
 
 Troubleshooting: If you have problems with SSH keys, you can follow our internal handbook article about [setting up SSH keys](https://app.gitbook.com/o/P49cpcrUNEImf2xtEknS/s/5YQSIGv5ozj0uCmkBoIh/tech/trainings/connect-to-github-with-ssh). This will guide you through the process specific to our workflow.
 
@@ -87,7 +95,21 @@ Open your favorite code editor and make the necessary changes to implement your 
 
 **Commit frequently:** Push yourself to commit when you're happy with the result of what you have. Try to reach a satisfactory result soon rather than making one massive change - smaller, focused commits are easier to review and track.
 
-## 3. Commit your changes
+## 3. Test your changes locally
+
+Before committing your changes, it's important to test them locally to ensure they work as expected.
+
+Then start the local development server:
+
+```bash
+npm start
+```
+
+Then open your browser and navigate to `http://localhost:3000` (or the port specified in your project) to see your changes in action.
+
+**Why?** This command starts a local development server that allows you to see how your documentation changes will look when published. It helps catch formatting issues, broken links, or display problems before submitting your changes.
+
+## 4. Commit your changes
 
 ```bash
 git add . # this command stages all files changes
@@ -95,6 +117,13 @@ git commit -m "docs: short description of changes"
 ```
 
 **Why?** Commits create savepoints in your code history. The `git add` command stages your changes (prepares them to be committed), and `commit` records them permanently in the repository history with a message describing what you did.
+
+**Using PyCharm:** As an alternative to command line, you can use PyCharm's Git integration:
+
+1. Right-click the changed files in the Project view
+2. Select "Git" → "Add" to stage changes
+3. Right-click again and select "Git" → "Commit"
+4. Enter your commit message following the convention and click "Commit"
 
 **Commit message format:** We follow conventional commits. For documentation changes, use:
 
@@ -109,7 +138,7 @@ Other common prefixes include:
 - `test:` for adding tests
 - `chore:` for maintenance tasks or unclassified changes
 
-## 4. Push your changes to the branch
+## 5. Push your changes to the branch
 
 ```bash
 git push origin docs/your-change-description
@@ -117,7 +146,7 @@ git push origin docs/your-change-description
 
 **Why?** Pushing uploads your local commits to GitHub, making them available to others and allowing you to create a pull request. The `origin` refers to the remote repository on GitHub.
 
-## 5. Open a pull request on GitHub
+## 6. Open a pull request on GitHub
 
 1. Navigate to the repository on GitHub
 2. You'll usually see a prompt to "Compare & pull request" for your recently pushed branch
@@ -128,10 +157,10 @@ git push origin docs/your-change-description
 
 **Include screenshots** when relevant to help reviewers understand your changes, especially for UI or documentation improvements.
 
-![Creating pull request screenshot](images/create-pr.png)
-![Describe pull request screenshot](images/pr-description.png)
+![Creating pull request screenshot](./images/create-pr.png)
+![Describe pull request screenshot](./images/pr-description.png)
 
-## 6. Address reviewer comments and wait for merge
+## 7. Address reviewer comments and wait for merge
 
 After submitting your pull request, reviewers may provide feedback or request changes:
 
